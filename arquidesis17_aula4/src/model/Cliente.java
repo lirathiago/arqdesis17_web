@@ -2,8 +2,7 @@ package model;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+
 import java.sql.SQLException;
 
 import dao.clienteDAO;
@@ -15,13 +14,7 @@ public class Cliente {
 	private String email;
 	private clienteDAO dao;
 
-	static {
-		try {
-			Class.forName("com.mysql.jdbc.Driver");
-		} catch (ClassNotFoundException e) {
-			throw new RuntimeException(e);
-		}
-	}
+	
 	
 	public Cliente(){
 		dao = new clienteDAO();
@@ -36,12 +29,7 @@ public class Cliente {
 	}
 
 
-	
-	// Obtém conexão com o banco de dados
-	public Connection obtemConexao() throws SQLException {
-		return DriverManager
-				.getConnection("jdbc:mysql://localhost/vendas?user=alunos&password=alunos");
-	}
+
 
 	public void criar() {
 		dao.criar(this);
